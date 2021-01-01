@@ -128,7 +128,7 @@ class PwnedPassword
 
         foreach($possibleHashes as $hash)
         {
-            if($this->_Tail === $hash['hash'])
+            if($this->_Tail === $hash['hash'] && $hash['count'] > 0)
             {
                 array_push($this->_Matches, $hash);
                 return true;
@@ -137,5 +137,4 @@ class PwnedPassword
 
         return false;
     }
-
 }
