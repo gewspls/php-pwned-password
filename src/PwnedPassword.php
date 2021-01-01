@@ -96,6 +96,11 @@ class PwnedPassword
     {
         $hashes = explode("\r\n", $hashes);
 
+        if(!count($hashes) > 0)
+        {
+            throw new Exception("Unable to parse response.");
+        }
+
         $possibleHashes = array();
 
         foreach($hashes as $hash)
