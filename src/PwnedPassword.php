@@ -91,7 +91,8 @@ class PwnedPassword
             CURLOPT_URL => $this->GetUri(),
             CURLOPT_CONNECTTIMEOUT => 60,
             CURLOPT_TIMEOUT => 60,
-            CURLOPT_USERAGENT => $_SERVER['HTTP_USER_AGENT']
+            CURLOPT_USERAGENT => $_SERVER['HTTP_USER_AGENT'],
+            CURLOPT_HTTPHEADER => array("Add-Padding: true")
         );
     }
 
