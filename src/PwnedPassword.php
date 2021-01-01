@@ -30,12 +30,15 @@ class PwnedPassword
 
     public function GetExposureCount()
     {
-        if(count($this->_Matches) > 0)
+        if($this->CheckPasswordExposure())
         {
-            return $this->_Matches[0]['instanceCount'];
+            if(count($this->_Matches) > 0)
+            {
+                return $this->_Matches[0]['count'];
+            }
         }
 
-        throw new Exception("No matches found to count");
+        return 0;
     }
 
     private function HashString()
@@ -110,7 +113,7 @@ class PwnedPassword
                 $possibleHashes,
                 array(
                 "hash" => $hashArray[0],
-                "instanceCount" => $hashArray[1]
+                "count" => $hashArray[1]
                 )
             );
         }
@@ -120,6 +123,8 @@ class PwnedPassword
 
     private function SearchForMatches($possibleHashes)
     {
+        $this->_Matches = array(); // reset this
+
         foreach($possibleHashes as $hash)
         {
             if($this->_Tail === $hash['hash'])
