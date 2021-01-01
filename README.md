@@ -9,7 +9,7 @@ This library uses the Have I Been Pwned Password API to check if a supplied pass
 The API uses k-Anonimity, you can find more information in the API documentation [here](https://haveibeenpwned.com/API/v3#PwnedPasswords) but the TL;DR of the library is:
 
 1. Generates an SHA-1 hash of the provided password.
-2. Passed the first 5 characters of the generated SHA-1 hash to the API.
+2. Passes the first 5 characters of the generated SHA-1 hash to the API.
 3. Searches through the returned responses to determine whether or not the password has been exposed.
 
 The full SHA-1 hash of the provided password is never sent in the HTTP request to the API.
